@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create]
 
-  # get '/authorized_user', to: 'users#show'
+  get 'authorized_user', to: 'users#show'
 
   
 
