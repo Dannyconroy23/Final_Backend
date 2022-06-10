@@ -70,3 +70,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rest-client", "~> 2.1"
+
+gem "json", "~> 2.6"
+
+gem "net-http", "~> 0.2.2"
