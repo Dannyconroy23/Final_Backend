@@ -6,6 +6,25 @@ class CharactersController < ApplicationController
         response = RestClient.get(url)
         render json: response
     end
+
+    
+     def show
+            character = Character.find_by(id: params[:id])
+            render json: character, status: :ok
+    end
+
+    
+
+
+
+    
+  
+
+   
+
+    
+
+    
     
       
 end
