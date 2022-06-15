@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_13_141055) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "character_id"
+    t.integer "character_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,5 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_13_141055) do
   end
 
   add_foreign_key "characters", "users"
+  add_foreign_key "favorites", "characters"
   add_foreign_key "favorites", "users"
 end
