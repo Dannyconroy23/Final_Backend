@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :destroy]
-  resources :favorites, only: [:index, :show, :create]
+  resources :favorites, only: [:index, :show, :create, :destroy]
   resources :characters, only: [:index, :show]
   get 'characters', to: 'characters#index'
   get 'characters/_id', to: 'characters#show'
 
   post 'favorites', to: 'favorites#create'
+
+ delete 'favorites', to: 'favorites#destroy'
 
   
   get '/favorites/by_user/:id', to: 'favorites#user_favorites'
