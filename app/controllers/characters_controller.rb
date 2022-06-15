@@ -13,6 +13,11 @@ class CharactersController < ApplicationController
             render json: character, status: :ok
     end
 
+    def create
+        character = Character.create!(character_params)
+        render json: character
+    end
+
     
 
 
