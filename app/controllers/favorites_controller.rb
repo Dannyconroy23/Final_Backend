@@ -12,12 +12,12 @@ class FavoritesController < ApplicationController
     def create
       character = Character.find_by(id:params[:character_id])  
       if !character.present?
-        created_character = Character.create(id: params[:character_id], user_id: params[:user_id], name: params[:char][:imageUrl], imageUrl: params[:char][:imageUrl])
+        created_character = Character.create(id: params[:character_id], user_id: params[:user_id], name: params[:char][:name], imageUrl: params[:char][:imageUrl])
       end
       character = Character.find_by(id:params[:character_id])   
       favorite = Favorite.find_by(user_id: params[:user_id], character_id: params[:character_id])
       if !favorite.present?
-        favorite = Favorite.create(character_id: params[:character_id], user_id: params[:user_id], name: params[:char][:name], imageUrl: params[:char][:imageUrl])
+        favorite = Favorite.create(character_id: params[:character_id], user_id: params[:user_id])
       end
       render json: favorite, status: :created
   end
@@ -34,7 +34,7 @@ class FavoritesController < ApplicationController
     end
   
     def user_favorites
-      current_user_favorite = Favorite.joins(:user).where(:user => {:id => params[:id]})
+      current_user_favorite = current_user.characters
       render json: current_user_favorite
     end
   
